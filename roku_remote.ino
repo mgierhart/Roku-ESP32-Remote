@@ -1,12 +1,21 @@
+/*
+@Title ESP32-WROOM-32 Roku Remote
+@Author Mike Gierhart
+@Date May 6th, 2023
+
+@Hardware Conceivably any ESP32 dev board would work
+*/
+
 #include <WiFi.h>
 #include <WiFiClient.h>
 
+//Define Wifi login and Roku's IP on the internal network--match the Roku IP to the one found in your Roku's settings
 const char* ssid = "YOUR_SSID_HERE";
 const char* password ="YOUR_WIFI_PASSWORD_HERE";
 const char* rokuIP = "ROKU_IP_ON_LOCAL_NETWORK";
 
 // Define the pins for the buttons
-int IPPin = 23;
+int UPPin = 23;
 int DOWNPin = 21;
 int LEFTPin = 4;
 int RIGHTPin = 5;
@@ -19,8 +28,8 @@ int FWDPin = 27;
 int VOLUMEUPPin = 14;
 int VOLUMEDOWNPin = 12;
 int POWEROFFPin = 2;
-boolean buttonStates[] = {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH};
 
+//Roku-specific wifi stuff
 WiFiClient client;
 
 void sendCommand(String command) {
@@ -36,6 +45,7 @@ void sendCommand(String command) {
   }
 }
 
+//enable pullup resistor for each pin
 void setup() {
   Serial.begin(115200);
   pinMode(UPPin, INPUT_PULLUP);
@@ -52,6 +62,7 @@ void setup() {
   pinMode(VOLUMEDOWNPin, INPUT_PULLUP);
   pinMode(POWEROFFPin, INPUT_PULLUP);
 
+//login to wifi with the const char variables defined above
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -60,6 +71,7 @@ void setup() {
   Serial.println("Connected to WiFi!");
 }
 
+//commands sent by buttons to Roku; I set each button to have a delay(100) so I'd have variables to mess with if needed, then a global delay(50) at the end just because
 void loop() {
   if (digitalRead(UPPin) == LOW) {
     delay(100);
