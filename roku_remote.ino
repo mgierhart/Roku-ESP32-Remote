@@ -28,6 +28,7 @@ int FWDPin = 27;
 int VOLUMEUPPin = 14;
 int VOLUMEDOWNPin = 12;
 int POWEROFFPin = 2;
+int INFOPin = 19;
 
 //Roku-specific wifi stuff
 WiFiClient client;
@@ -61,6 +62,7 @@ void setup() {
   pinMode(VOLUMEUPPin, INPUT_PULLUP);
   pinMode(VOLUMEDOWNPin, INPUT_PULLUP);
   pinMode(POWEROFFPin, INPUT_PULLUP);
+  pinMode(INFOPin, INPUT_PULLUP);
 
 //login to wifi with the const char variables defined above
   WiFi.begin(ssid, password);
@@ -125,5 +127,9 @@ void loop() {
     delay(100);
     sendCommand("PowerOff");
   }
-  delay(150);
+  if (digitalRead(INFOPin) == LOW) {
+    delay(100);
+    sendCommand("Info");
+  }
+  delay(200);
 }
