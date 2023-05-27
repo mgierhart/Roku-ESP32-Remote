@@ -125,5 +125,5 @@ void loop() {
     delay(100);
     sendCommand("PowerOff");
   }
-  delay(50);
+  delay(150);
 }
