@@ -1,6 +1,8 @@
 # Roku-ESP32-Remote
 ESP32 Wifi Remote for Roku
 
+PLEASE NOTE that this connects to the Roku via IP address, which needs to be added to the code before you flash it to the ESP32.
+
 This code was developed for an ESP32-WROOM-32 board in the Arduino IDE.  It's configured for my Roku Streambar to use the following buttons:
 
 Up                 = Pin 23
