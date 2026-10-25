@@ -8,7 +8,7 @@
 v2 changes:
   - Finds the Roku automatically (SSDP discovery) -- no IP address to configure.
     The last-known IP is saved in flash, and discovery re-runs if the Roku moves.
-  - HDMI input switching buttons (InputHDMI1..4 work on Roku OS 16 Streambar via CEC).
+  - HDMI input switching buttons (InputHDMI1..4; HDMI1 confirmed on a Roku OS 16 Streambar).
   - Wi-Fi credentials live in secrets.h so they never get committed to GitHub.
   - Non-blocking debounce; arrows and volume auto-repeat while held.
   - Reconnects to Wi-Fi automatically if the router drops.
@@ -69,11 +69,11 @@ Button buttons[] = {
   {19, "Info",       false},
 
   // New in v2: TV input switching over HDMI-CEC. Change pins/inputs to match
-  // your TV, or delete lines you don't need. Other options: InputHDMI4,
-  // InputTuner, InputAV1.
+  // your TV, or delete lines you don't need. Other options: InputTuner, InputAV1.
   {13, "InputHDMI1", false},
   {16, "InputHDMI2", false},
   {17, "InputHDMI3", false},
+  {18, "InputHDMI4", false},
 };
 const size_t NUM_BUTTONS = sizeof(buttons) / sizeof(buttons[0]);
 

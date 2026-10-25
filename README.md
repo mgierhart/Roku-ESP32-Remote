@@ -38,11 +38,12 @@ Each button connects its GPIO pin to GND; internal pull-ups are used. Arrows and
 | TV input HDMI 1 | 13 | `InputHDMI1` |
 | TV input HDMI 2 | 16 | `InputHDMI2` |
 | TV input HDMI 3 | 17 | `InputHDMI3` |
+| TV input HDMI 4 | 18 | `InputHDMI4` |
 
-To change the layout, edit the `buttons[]` table in the sketch. Each line is just a pin, a key name, and whether it repeats when held. Other useful keys: `VolumeMute`, `InstantReplay`, `InputHDMI4`, `Backspace`, `Search`.
+To change the layout, edit the `buttons[]` table in the sketch. Each line is just a pin, a key name, and whether it repeats when held. Other useful keys: `VolumeMute`, `InstantReplay`, `Backspace`, `Search`.
 
 ### TV input switching
-Recent Roku OS versions (confirmed on a Streambar running Roku OS 16.0.4) can switch the TV's HDMI inputs over HDMI-CEC, and the `InputHDMI1`–`InputHDMI4` keys work over ECP even though Roku's ECP documentation still lists them as Roku TV-only. Press **Home** to come back to the Roku.
+Recent Roku OS versions can switch the TV's HDMI inputs over HDMI-CEC, and ECP accepts the `InputHDMI1`–`InputHDMI4` keys on a Streambar even though Roku's ECP documentation still lists them as Roku TV-only. `InputHDMI1` has been confirmed on a Streambar running Roku OS 16.0.4; the other three use the same mechanism but haven't been individually tested. Press **Home** to come back to the Roku. If your TV has fewer inputs, delete the extra lines from `buttons[]`.
 
 ### Pin notes
 GPIO 2, 12 and 15 are ESP32 "strapping" pins that are read at power-up. They're fine for buttons, but holding one of those buttons while the board boots can cause odd startup behavior. Avoid GPIO 34–39 for buttons: they are input-only and have no internal pull-ups.
