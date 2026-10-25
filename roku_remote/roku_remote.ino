@@ -8,7 +8,7 @@
 v2 changes:
   - Finds the Roku automatically (SSDP discovery) -- no IP address to configure.
     The last-known IP is saved in flash, and discovery re-runs if the Roku moves.
-  - HDMI input switching buttons (InputHDMI1..4; HDMI1 confirmed on a Roku OS 16 Streambar).
+  - HDMI input switching buttons (InputHDMI1..4, confirmed on a Roku OS 16 Streambar).
   - Wi-Fi credentials live in secrets.h so they never get committed to GitHub.
   - Non-blocking debounce; arrows and volume auto-repeat while held.
   - Reconnects to Wi-Fi automatically if the router drops.
