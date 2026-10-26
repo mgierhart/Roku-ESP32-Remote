@@ -5,6 +5,8 @@ It talks to the Roku over the local network using Roku's External Control Protoc
 
 Developed for an ESP32-WROOM-32 (38-pin dev board) in the Arduino IDE, with a Roku Streambar. Compiles on the ESP32 Arduino core 3.x.
 
+**Want a handheld version?** [`hardware/BUILD.md`](hardware/BUILD.md) has a parts list (about $10–15), a perfboard wiring guide, and print-ready STL files for a 3D-printed case with labeled buttons.
+
 ## Setup
 
 1. Open `roku_remote/roku_remote.ino` in the Arduino IDE.
